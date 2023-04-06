@@ -196,7 +196,7 @@ io.on('connection',(socket)=>{
     })
 });
 
-server.listen(port,"192.168.189.60",()=>{
+server.listen(port,"127.0.0.1",()=>{
     console.log("Server started and running on port:"+port);
 });
 

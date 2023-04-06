@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, unused_import
+// ignore_for_file: file_names, prefer_const_constructors, unused_import, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/CreateRoomPage.dart';
@@ -6,7 +6,8 @@ import 'package:flutter_application_5/JoinRoomPage.dart';
 import 'package:flutter_application_5/main.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String serverIp;
+  HomePage({super.key, required this.serverIp});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               ElevatedButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CreateRoomPage())),
+                      builder: (context) => CreateRoomPage(serverIp: widget.serverIp))),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
                       textStyle: MaterialStateProperty.all(
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text("Create", style: TextStyle(fontSize: 16))),
               ElevatedButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const JoinRoomPage())),
+                      builder: (context) => JoinRoomPage(serverIp: widget.serverIp))),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
                       textStyle: MaterialStateProperty.all(

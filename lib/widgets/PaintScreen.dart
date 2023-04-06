@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/HomePage.dart';
 import 'package:flutter_application_5/Loading_Page.dart';
+import 'package:flutter_application_5/ServerPage.dart';
 import 'package:flutter_application_5/models/TouchPoints.dart';
 import 'package:flutter_application_5/widgets/CustomDrawer.dart';
 import 'package:flutter_application_5/widgets/FinalLeaderBoard.dart';
@@ -88,7 +89,7 @@ class _PaintScreenState extends State<PaintScreen> {
   }
 
   void connect() {
-    _socket = IO.io("http://192.168.189.60:3000", <String, dynamic>{
+    _socket = IO.io(widget.data['serverIp'], <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false
     });
@@ -124,7 +125,7 @@ class _PaintScreenState extends State<PaintScreen> {
       _socket.on(
           'notCorrectGame',
           (data) => Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => HomePage()),
+              MaterialPageRoute(builder: (context) => ServerPage()),
               (route) => false));
       _socket.on('points', (point) {
         setState(() {
@@ -258,7 +259,7 @@ class _PaintScreenState extends State<PaintScreen> {
       key: scaffold_key,
       drawer: CustomDrawer(userData: scoreBoard),
       backgroundColor: Colors.white,
-      body: dataOfRoom != null
+      body: dataOfRoom!=null
           ? dataOfRoom['isJoin'] != true
               ? !showLeaderBoard
                   ? Stack(
@@ -502,4 +503,3 @@ class _PaintScreenState extends State<PaintScreen> {
   }
 }
 
-// i want to 

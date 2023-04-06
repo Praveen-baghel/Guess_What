@@ -6,7 +6,8 @@ import 'package:flutter_application_5/widgets/CustomTextField.dart';
 import 'package:flutter_application_5/widgets/PaintScreen.dart';
 
 class CreateRoomPage extends StatefulWidget {
-  const CreateRoomPage({super.key});
+  final String serverIp;
+  const CreateRoomPage({required this.serverIp});
 
   @override
   State<CreateRoomPage> createState() => _CreateRoomPageState();
@@ -15,6 +16,7 @@ class CreateRoomPage extends StatefulWidget {
 class _CreateRoomPageState extends State<CreateRoomPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _roomNameController = TextEditingController();
+  final TextEditingController _serverIpController = TextEditingController();
   late String? _maxRounds;
   late String? _roomSize;
 
@@ -27,7 +29,8 @@ class _CreateRoomPageState extends State<CreateRoomPage> {
         'nickName': _nameController.text,
         'name': _roomNameController.text,
         'occupancy': _roomSize!,
-        'maxRounds': _maxRounds!
+        'maxRounds': _maxRounds!,
+        'serverIp': widget.serverIp
       };
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) =>

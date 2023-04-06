@@ -6,7 +6,8 @@ import 'package:flutter_application_5/widgets/CustomTextField.dart';
 import 'package:flutter_application_5/widgets/PaintScreen.dart';
 
 class JoinRoomPage extends StatefulWidget {
-  const JoinRoomPage({super.key});
+  final String serverIp;
+  const JoinRoomPage({super.key, required this.serverIp});
 
   @override
   State<JoinRoomPage> createState() => _JoinRoomPageState();
@@ -21,7 +22,8 @@ class _JoinRoomPageState extends State<JoinRoomPage> {
         _roomNameController.text.isNotEmpty) {
       Map<String, String> data = {
         'nickName': _nameController.text,
-        'name': _roomNameController.text
+        'name': _roomNameController.text,
+        'serverIp': widget.serverIp
       };
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) =>
