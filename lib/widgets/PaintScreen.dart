@@ -2,8 +2,10 @@
 // import 'dart:html';
 
 import 'dart:async';
+// import 'dart:html';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/HomePage.dart';
 import 'package:flutter_application_5/Loading_Page.dart';
@@ -88,16 +90,15 @@ class _PaintScreenState extends State<PaintScreen> {
     });
   }
 
-  void connect() async {
+  void connect() {
     _socket = IO.io(widget.data['serverIp'], <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false
     });
-    await _socket.connect();
+    _socket.connect();
     _socket.onConnect((data) {
-      _isConnecting = false;
       print('Connected!');
-
+      _isConnecting = false;
       if (widget.screenFrom == 'createRoom') {
         _socket.emit('create-room', widget.data);
       } else {
