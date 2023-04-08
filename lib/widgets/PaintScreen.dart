@@ -2,7 +2,6 @@
 // import 'dart:html';
 
 import 'dart:async';
-// import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -28,6 +27,7 @@ class PaintScreen extends StatefulWidget {
 }
 
 class _PaintScreenState extends State<PaintScreen> {
+  bool _isConnecting = true;
   List<Map> messages = [];
   ScrollController _scrollController = ScrollController();
   late IO.Socket _socket;
@@ -88,13 +88,14 @@ class _PaintScreenState extends State<PaintScreen> {
     });
   }
 
-  void connect() {
+  void connect() async {
     _socket = IO.io(widget.data['serverIp'], <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false
     });
-    _socket.connect();
+    await _socket.connect();
     _socket.onConnect((data) {
+      _isConnecting = false;
       print('Connected!');
 
       if (widget.screenFrom == 'createRoom') {
@@ -259,7 +260,7 @@ class _PaintScreenState extends State<PaintScreen> {
       key: scaffold_key,
       drawer: CustomDrawer(userData: scoreBoard),
       backgroundColor: Colors.white,
-      body: dataOfRoom!=null
+      body: !_isConnecting
           ? dataOfRoom['isJoin'] != true
               ? !showLeaderBoard
                   ? Stack(
@@ -502,4 +503,3 @@ class _PaintScreenState extends State<PaintScreen> {
     );
   }
 }
-

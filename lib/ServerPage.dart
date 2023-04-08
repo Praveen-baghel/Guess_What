@@ -20,9 +20,19 @@ class _ServerPageState extends State<ServerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/set-background-image-flutter-hero.webp'),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("Server Page"),
+          title: Text("Server Page",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+          backgroundColor: Colors.lightGreen,
           centerTitle: true,
         ),
         body: Column(
@@ -41,17 +51,19 @@ class _ServerPageState extends State<ServerPage> {
             ElevatedButton(
               onPressed: goHome,
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  backgroundColor: MaterialStateProperty.all(Colors.lightGreenAccent),
                   textStyle:
                       MaterialStateProperty.all(TextStyle(color: Colors.white)),
                   minimumSize: MaterialStateProperty.all(
                       Size(MediaQuery.of(context).size.width / 2.5, 50))),
               child: Text(
                 "Start Playing",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             )
           ],
-        ));
+        ),
+        ),
+    );
   }
 }
