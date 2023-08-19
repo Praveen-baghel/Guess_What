@@ -1,6 +1,7 @@
 // ignore_for_file: overridden_fields, override_on_non_overriding_member
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/HomePage.dart';
 import 'package:flutter_application_5/ServerPage.dart';
 // import 'package:flutter_application_5/widgets/PaintScreen.dart';
 
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ServerPage(),
+      home:  ServerPage(),
     );
   }
 }
