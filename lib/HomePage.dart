@@ -43,28 +43,22 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) =>
                                 CreateRoomPage(serverIp: widget.serverIp))),
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.lightGreenAccent),
                         textStyle: MaterialStateProperty.all(
                             TextStyle(color: Colors.black)),
                         minimumSize: MaterialStateProperty.all(
                             Size(MediaQuery.of(context).size.width / 2.5, 50))),
-                    child: Text("Create",
-                        style: TextStyle(color: Colors.black, fontSize: 16))),
+                    child: Text("Create", style: TextStyle(fontSize: 16))),
                 ElevatedButton(
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) =>
                                 JoinRoomPage(serverIp: widget.serverIp))),
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.lightGreenAccent),
                         textStyle: MaterialStateProperty.all(
                             TextStyle(color: Colors.black)),
                         minimumSize: MaterialStateProperty.all(
                             Size(MediaQuery.of(context).size.width / 2.5, 50))),
-                    child: Text("Join",
-                        style: TextStyle(color: Colors.black, fontSize: 16)))
+                    child: Text("Join", style: TextStyle(fontSize: 16)))
               ],
             )
           ],

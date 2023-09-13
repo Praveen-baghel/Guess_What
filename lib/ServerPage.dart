@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/HomePage.dart';
 import 'package:flutter_application_5/widgets/CustomTextField.dart';
@@ -20,50 +22,41 @@ class _ServerPageState extends State<ServerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints.expand(),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/set-background-image-flutter-hero.webp'),
-          fit: BoxFit.fill,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Server Page",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: Text("Server Page",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-          backgroundColor: Colors.lightGreen,
-          centerTitle: true,
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: CustomTextField(
-                controller: _serverIpController,
-                hintText: 'Enter server Ip',
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: CustomTextField(
+              controller: _serverIpController,
+              hintText: 'Enter server Ip',
             ),
-            SizedBox(
-              height: 20,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            onPressed: goHome,
+            style: ButtonStyle(
+                textStyle:
+                    MaterialStateProperty.all(TextStyle(color: Colors.white)),
+                minimumSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width / 2.5, 50))),
+            child: Text(
+              "Start Playing",
+              style: TextStyle(fontSize: 16),
             ),
-            ElevatedButton(
-              onPressed: goHome,
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.lightGreenAccent),
-                  textStyle:
-                      MaterialStateProperty.all(TextStyle(color: Colors.white)),
-                  minimumSize: MaterialStateProperty.all(
-                      Size(MediaQuery.of(context).size.width / 2.5, 50))),
-              child: Text(
-                "Start Playing",
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
-            )
-          ],
-        ),
-        ),
+          )
+        ],
+      ),
     );
   }
 }

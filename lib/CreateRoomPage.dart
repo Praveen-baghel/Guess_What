@@ -7,7 +7,7 @@ import 'package:flutter_application_5/widgets/PaintScreen.dart';
 
 class CreateRoomPage extends StatefulWidget {
   final String serverIp;
-  const CreateRoomPage({required this.serverIp});
+  const CreateRoomPage({super.key, required this.serverIp});
 
   @override
   State<CreateRoomPage> createState() => _CreateRoomPageState();

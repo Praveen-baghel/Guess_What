@@ -8,7 +8,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_5/main.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:restart_app/restart_app.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class FinalLeaderBoard extends StatelessWidget {
   final scoreBoard;
@@ -64,7 +63,7 @@ class FinalLeaderBoard extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  
+                  RestartWidget.restartApp(context);
                 },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue),

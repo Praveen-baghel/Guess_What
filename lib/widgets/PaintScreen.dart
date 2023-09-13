@@ -97,8 +97,8 @@ class _PaintScreenState extends State<PaintScreen> {
     });
     _socket.connect();
     _socket.onConnect((data) {
-      print('Connected!');
       _isConnecting = false;
+      print('Connected!');
       if (widget.screenFrom == 'createRoom') {
         _socket.emit('create-room', widget.data);
       } else {
@@ -341,7 +341,9 @@ class _PaintScreenState extends State<PaintScreen> {
                                               actions: [
                                                 TextButton(
                                                     onPressed: () {
-                                                      Navigator.of(context)
+                                                      Navigator.of(context,
+                                                              rootNavigator:
+                                                                  true)
                                                           .pop();
                                                     },
                                                     child: Text("Close"))
@@ -477,10 +479,7 @@ class _PaintScreenState extends State<PaintScreen> {
                         ))
                       ],
                     )
-                  : FinalLeaderBoard(
-                      scoreBoard: scoreBoard,
-                      winner: winner,
-                    )
+                  : FinalLeaderBoard(scoreBoard: scoreBoard, winner: winner)
               : WaitingLobbyPage(
                   occupancy: dataOfRoom['occupancy'],
                   roomName: dataOfRoom['name'],
