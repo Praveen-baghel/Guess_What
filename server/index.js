@@ -141,7 +141,7 @@ io.on("connection", (socket) => {
         }
       }
     } catch (error) {
-      console.log(error.toString());
+      consoless.log(error.toString());
     }
   });
   socket.on("change-turn-guess", async (roomName) => {

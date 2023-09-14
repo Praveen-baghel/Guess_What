@@ -16,7 +16,6 @@ class CreateRoomPage extends StatefulWidget {
 class _CreateRoomPageState extends State<CreateRoomPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _roomNameController = TextEditingController();
-  final TextEditingController _serverIpController = TextEditingController();
   late String? _maxRounds;
   late String? _roomSize;
 

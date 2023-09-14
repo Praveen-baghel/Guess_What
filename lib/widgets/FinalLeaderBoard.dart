@@ -7,7 +7,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_5/main.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:restart_app/restart_app.dart';
 
 class FinalLeaderBoard extends StatelessWidget {
   final scoreBoard;
